@@ -1,4 +1,4 @@
-namespace Lista_de_Series.Enum
+namespace Lista_de_Series
 {
     public enum Genero
     {

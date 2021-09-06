@@ -1,3 +1,5 @@
+using System;
+
 namespace Lista_de_Series
 {
     public class Serie : EntidadeBase
@@ -6,7 +8,7 @@ namespace Lista_de_Series
 
         private string Titulo { get; set; }
 
-        private string Descircao { get; set; }
+        private string Descricao { get; set; }
 
         private int Ano { get; set; }
 
@@ -16,7 +18,7 @@ namespace Lista_de_Series
             this.ID = id;
             this.Genero = genero;
             this.Titulo = titulo;
-            this.Descicao = descricao;
+            this.Descricao = descricao;
             this.Ano = ano;
         }
 
@@ -27,7 +29,6 @@ namespace Lista_de_Series
             retorno += "Titulo: " + this.Titulo + Environment.NewLine;
             retorno += "Descrição: " + this.Descricao + Environment.NewLine;
             retorno += "Ano de Início: " + this.Ano + Environment.NewLine;
-            retorno += "Excluido: " + this.Excluido;
 			return retorno;
         }
 
