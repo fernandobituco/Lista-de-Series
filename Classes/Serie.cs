@@ -46,6 +46,11 @@ namespace Lista_de_Series
             return this.ID;
         }
 
+        public bool retornaExcluido()
+        {
+            return this.Excluido;
+        }
+
         public void Excluir()
         {
             this.Excluido = true;
