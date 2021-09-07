@@ -34,6 +34,9 @@ namespace Lista_de_Series
 					case "6":
 						BuscaPorGenero();
 						break;
+					case "7":
+						BuscaPorTitulo();
+						break;
 					case "C":
 						Console.Clear();
 						break;
@@ -47,8 +50,26 @@ namespace Lista_de_Series
 			}
 
 			Console.WriteLine("Obrigado por utilizar nossos serviços.");
-			Console.ReadLine();
         }
+
+		private static void listarSeries(Serie serie)
+		{
+			var excluido = serie.retornaExcluido();
+			Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaID(), serie.retornaTitulo(), (excluido ? "*Excluído*" : ""));
+		}
+
+		private static void BuscaPorTitulo()
+		{
+			Console.WriteLine("Digite o titulo que esta procurando");
+			string tituloBuscado = Console.ReadLine();
+			foreach(var serie in repositorio.Lista())
+			{
+				if (serie.retornaTitulo().ToUpper().Contains(tituloBuscado.ToUpper()))
+				{
+					listarSeries(serie);
+				}
+			}
+		}
 
 		private static void BuscaPorGenero()
 		{
@@ -63,8 +84,7 @@ namespace Lista_de_Series
 			{
 				if ((Genero)generoID == serie.RetornaGenero())
 				{
-					var excluido = serie.retornaExcluido();
-					Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaID(), serie.retornaTitulo(), (excluido ? "*Excluído*" : ""));
+					listarSeries(serie);
 				}
 			}
 		}
@@ -83,8 +103,7 @@ namespace Lista_de_Series
 
 			foreach (var serie in lista)
 			{
-				var excluido = serie.retornaExcluido();
-				Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaID(), serie.retornaTitulo(), (excluido ? "*Excluído*" : ""));
+				listarSeries(serie);
 			}
 		}
 
@@ -181,6 +200,7 @@ namespace Lista_de_Series
 			Console.WriteLine("4- Excluir série");
 			Console.WriteLine("5- Visualizar série");
 			Console.WriteLine("6- Pesquisar por gênero");
+			Console.WriteLine("7- Busca por titulo");
 			Console.WriteLine("C- Limpar Tela");
 			Console.WriteLine("X- Sair");
 			Console.WriteLine();
