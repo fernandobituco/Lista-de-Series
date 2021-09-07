@@ -31,6 +31,9 @@ namespace Lista_de_Series
 					case "5":
 						VisualizarSerie();
 						break;
+					case "6":
+						BuscaPorGenero();
+						break;
 					case "C":
 						Console.Clear();
 						break;
@@ -46,6 +49,25 @@ namespace Lista_de_Series
 			Console.WriteLine("Obrigado por utilizar nossos serviços.");
 			Console.ReadLine();
         }
+
+		private static void BuscaPorGenero()
+		{
+			foreach (int i in Enum.GetValues(typeof(Genero)))
+			{
+				Console.WriteLine("{0}-{1}", i, Enum.GetName(typeof(Genero), i));
+			}
+
+			Console.WriteLine("Digite a ID do genero desejado");
+			int generoID = int.Parse(Console.ReadLine());
+			foreach(var serie in repositorio.Lista())
+			{
+				if ((Genero)generoID == serie.RetornaGenero())
+				{
+					var excluido = serie.retornaExcluido();
+					Console.WriteLine("#ID {0}: - {1} {2}", serie.retornaID(), serie.retornaTitulo(), (excluido ? "*Excluído*" : ""));
+				}
+			}
+		}
 
         private static void ListarSeries()
 		{
@@ -158,6 +180,7 @@ namespace Lista_de_Series
 			Console.WriteLine("3- Atualizar série");
 			Console.WriteLine("4- Excluir série");
 			Console.WriteLine("5- Visualizar série");
+			Console.WriteLine("6- Pesquisar por gênero");
 			Console.WriteLine("C- Limpar Tela");
 			Console.WriteLine("X- Sair");
 			Console.WriteLine();

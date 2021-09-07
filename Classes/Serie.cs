@@ -55,6 +55,11 @@ namespace Lista_de_Series
         {
             this.Excluido = true;
         }
+
+        public Genero RetornaGenero()
+        {
+            return this.Genero;
+        }
         
     }
 }
